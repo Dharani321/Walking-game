@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            /* background-color: rgb(92, 96, 95); */
+            background: url("greyson-joralemon-9IBqihqhuHc-unsplash.jpg");
+            backdrop-filter:blur(9000000000spx);
+            width: 100%;
+            height: 100%;
+        }
+        .container{
+            height:5px;
+            width:100%;
+            background-color: rgb(198, 198, 183);
+            /* position: absolute; */
+            margin-top: 200px;
+            box-shadow: 2px 2px 2px ;
+        }
+        hr{
+            /* background-color: rgb(29, 8, 8);
+            position: relative; */
+        }
+        .road{
+            height:5px;
+            width: 100%;
+            color:rgb(225, 14, 14);
+            position: relative;
+        }
+        .obj{
+            background:url("output-onlinegiftools.gif");
+            background-size:150%;
+            height:80px;
+            width:80px;
+            position:absolute;
+            top:-80px;
+            left: 20px;
+            z-index: 2;
+        }
+       .c{
+            background-color:blueviolet;
+            height: 25px;
+            width:25px;
+            position: absolute;
+            z-index: 2;
+        }
+        .score{
+            background-color: aliceblue;
+            color:rgb(22, 33, 11);
+            margin: auto;
+            display:flex;
+            width: 110px;
+            box-shadow: 2px 2px rgb(13, 13, 36);
+        }
+        p{
+            background-color: rgb(156, 156, 223);
+            color:rgb(6, 27, 6);
+        }
+        .star{
+            background-color: rgb(39, 39, 72);
+            color:white;
+            position:absolute;
+            opacity: 1;
+            height:auto;
+            width:100px;
+            margin:0px auto;
+            left: 45%;
+            border-radius: 10px;
+            text-align:center;
+            justify-content: center;
+            place-items: center;
+            align-items: center;
+            z-index: 2222;
+        }
+
+
+
+        .sta{
+            background-color: rgb(39, 39, 72);
+            color:white;
+            /* position:absolute; */
+            opacity: 1;
+            height:auto;
+            width:100px;
+            margin:0px auto;
+            left:46%;
+            border-radius: 10px;
+            text-align:center;
+            justify-content: center;
+            place-items: center;
+            align-items: center;
+            z-index: 5555;
+        }
+        
+        .star:hover{
+            width: 30%;
+            left:35%;
+            cursor: pointer;
+            /* height:0%; */
+            padding: 5px;
+            
+        }
+        
+        .dsc{
+            height:20px;
+            width:50px;
+            background-color: beige;
+        }
+        .st{
+            height:30px;
+            width:50%;
+            margin: auto;
+            background-color: bisque;
+            text-align: center;
+            position: absolute;
+            top:45%;
+            left:25%;
+
+        }
+        .st:hover{
+            cursor:pointer;
+        }
+        .outer{
+             margin-left: 90%;
+            position:relative;
+            border-radius: 12rem;
+            width:50px;
+            height:25px;
+            background-color: rgb(30, 4, 4);
+        }
+        .inner{
+            position:absolute;
+            border-radius: 50%;
+            top: 2px;
+            left: 2px;
+            width:20px;
+            height:20px;
+            background-color: rgb(242, 239, 239);
+        }
+        .tra{
+            transform: translateX(25px);
+            background-color: rgb(7, 13, 1);
+        }
+        .img{
+            background: url("6898809.jpg");
+            backdrop-filter:blur(9000000000px);
+
+        }
+        .red{
+            background-color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer">
+        <div class="inner"></div>
+    </div>
+    <div class="score">Score :<h>0</h></div>
+    <div class="container">
+        
+        <div class="road">
+            <hr>
+            <div class="obj">
+
+            </div>
+            <!-- <button class="startAgain">Start from </button> -->
+        </div>
+    </div>
+    <script>
+        document.querySelector(".outer").addEventListener("click",()=>{
+            document.querySelector(".inner").classList.toggle("tra");
+            document.querySelector("body").classList.toggle("img");
+            document.querySelector(".outer").classList.toggle("red");
+        });
+
+        // document.querySelector(".obj").addEventListener("click",()=>{
+        //     document.querySelector(".obj").style.transform="translateX(100px)";
+        // });
+
+        // let score=0;
+        
+        let obj={
+            ArrowUp:false
+        };
+
+        let score={
+            score:0,
+        }
+
+        
+        document.addEventListener("keydown",keydown);
+        document.addEventListener("keyup",keyup);
+        function keydown(e)
+        {
+            // alert("keydown");
+           obj[e.key]=true;
+           //console.log(obj);
+        }
+        function keyup(e)
+        {
+            // alert("keyup");
+            obj[e.key]=false;
+            //console.log(e.key);
+            let lef=document.querySelector(".obj");
+            let heit=-80;
+            setTimeout(()=>{
+                document.querySelector(".obj").style.top=heit +"px";
+            },600);
+            
+
+        }
+
+       let isend=false;
+
+
+        let startagain=document.createElement('div');
+        //     let con=document.querySelector(".container");
+        // contain.style.opacity="0";
+        startagain.setAttribute('class','st');
+        startagain.style.opacity="0";
+        document.querySelector("body").appendChild(startagain);
+
+        let n1=document.createElement('div');
+            let contain=document.querySelector(".container");
+        contain.style.opacity="0";
+        n1.setAttribute('class','sta');
+        n1.innerHTML="";
+        document.querySelector("body").appendChild(n1);
+
+
+        let high=document.createElement('div');
+        //     let con=document.querySelector(".container");
+        // contain.style.opacity="0";
+        high.setAttribute('class','h');
+       high.style.opacity="1";
+        document.querySelector("body").appendChild(high);
+        
+        
+
+        function end(){
+            
+            
+            //scor=0;
+            isend=true;
+            if(isend){
+           
+            
+                
+
+                 
+                //document.querySelector(".score").innerHTML="High Score :" + score.score;
+                
+                
+            document.querySelector(".sta").style.opacity="1";
+        //n1.textContent="Game over!";
+        document.querySelector(".sta").innerHTML="Game Over !";
+        //This will be used for editing
+        document.querySelector(".star").innerHTML="";
+
+        document.querySelector(".container").style.opacity="0";
+
+        startagain.style.opacity="1";
+        startagain.textContent="Start Again";
+
+         
+        //
+
+
+        startagain.addEventListener("click",()=>{
+            start();
+            score.score=0;
+            //gameloop();
+            document.querySelector(".st").style.opacity="0";
+            //document.querySelector(".sta").innerHTML="";
+            document.querySelector(".sta").style.opacity="0";
+            document.querySelector(".star").style.opacity="0";
+           //document.querySelector(".score").innerHTML="score :"+0; 
+            //document.querySelector(".container").style.opacity="0";
+           
+            
+            document.querySelector(".container").style.opacity="1";
+            //score.score=0;
+            
+           // alert("gi");
+            
+        //    document.querySelector(".sta").innerHTML="";
+        //     document.querySelector(".star").innerHTML="";
+            //document.querySelector(".sta").style.display="none";
+            //contain.innerHTML="";
+            
+        });
+    }
+        }
+
+        function getboundry(a,b)
+        {
+            let obj=a.getBoundingClientRect();
+            console.log(obj);
+            let collision=b.getBoundingClientRect();
+            console.log(collision);
+            return !((obj.left>collision.right)||(obj.right<collision.left)||(obj.bottom<collision.top)||(obj.top>collision.bottom));
+        //     if(!(obj.left>collision.right)||!(collision.top>obj.left))
+        //    {
+        //       alert("Collided");
+        //    }
+
+        }
+
+        
+    const randomcollision=()=>{
+        
+      
+
+       for(let i=1;i<=5;i++)
+       {
+          
+          let col=document.createElement('div');
+          col.setAttribute('class','c');
+          let width=(i*260);
+
+          
+          col.style.left=width +"px";
+          col.style.top=-25+"px";
+          let road=document.querySelector(".road");
+          road.appendChild(col);
+
+       }
+    };
+
+    randomcollision();
+
+
+    function gameloop()
+
+
+    {
+       
+        // scor+=1;
+      
+            //let score=0;
+            
+        let speed1=2;
+        let speed=-120;
+        let lef=document.querySelector(".obj");
+        let heit=lef.offsetTop;
+        //console.log(heit);
+        
+
+        let allco=document.querySelectorAll(".c");
+        allco.forEach((item)=>{
+            
+        if(getboundry(lef,item)){
+            //alert("hi");
+            //score.score=score.score;
+            //score.score=0;
+            document.querySelector("h").innerHTML=score.score; 
+        //     let dscore=document.createElement('div');
+        // //contain.style.opacity="0";
+        // dscore.setAttribute('class','dsc');
+        // document.querySelector("body").appendChild(dscore);
+        // dscore.innerHTML=score;
+           //alert("collision"); 
+           //document.querySelector("h").textContent="High Score :" +scor; 
+         //scor=0;
+                
+           //document.querySelector(".sta").innerHTML="Game Over !";
+          isend=true;
+           end();
+           //score=0;
+           //document.querySelector(".sta").innerHTML="Game Over !";
+            
+          
+
+        } 
+        // else{
+        //     // score=score+1;
+        //     // document.querySelector("h").innerHTML=score;
+        //     // let score=0;
+        // }
+
+        // score=score+1;
+        //     document.querySelector(".score").innerHTML=score;
+        let x=item.offsetLeft;  
+        //console.log(x);
+        if(x<0){
+             x=1500;
+             item.style.left=x +"px";
+          } 
+          
+          if(x<30){
+            document.querySelector("h").textContent=score.score++;   
+          } 
+        item.style.left=(x-speed1)+"px";
+
+        });
+
+        if(obj.ArrowUp)
+       {
+         heit=heit+speed; 
+         //alert(heit);
+         obj.ArrowUp=false;
+         document.querySelector(".obj").style.top=heit +"px";
+       }
+    //    else{
+    //     heit=-30; 
+    //      //alert(heit);
+    //      document.querySelector(".obj").style.top=heit+ "px";
+    //    }
+    
+       requestAnimationFrame(gameloop);
+    }  
+    //gameloop(); 
+    let n=document.createElement('div');
+        let contain1=document.querySelector(".container");
+        contain1.style.opacity="0";
+        //ocument.querySelector(".sta").style.opacity="0";
+        n.setAttribute('class','star');
+        document.querySelector("body").appendChild(n);
+    
+    function start(){
+        // contain.innerHTML="";
+         //score.score=0;
+        //n.style.opacity="1";
+        // let n=document.createElement('div');
+        // let contain1=document.querySelector(".container");
+        // contain1.style.opacity="0";
+        // //ocument.querySelector(".sta").style.opacity="0";
+        // n.setAttribute('class','star');
+        // document.querySelector("body").appendChild(n);
+        n.textContent="click To start";
+        document.querySelector(".star").addEventListener("click",()=>{
+      //score=0;
+      
+      gameloop();
+      document.querySelector(".container").style.opacity="1";
+      document.querySelector(".star").style.opacity="0";
+        //document.querySelector(".score").innerHTML=score.score;
+            
+            //n.style.opacity="0";
+            
+            //document.querySelector(".score").innerHTML=0;
+
+        });
+
+    }
+
+    start();
+
+    </script>
+</body>
+</html>
